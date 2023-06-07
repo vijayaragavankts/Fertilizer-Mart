@@ -1,0 +1,102 @@
+<%-include("header")%>
+<div class="products contain">
+    
+    <div class="row ">
+        <div class="col-md-12">
+            <h2>Fertilizers</h2>
+            <hr>
+        </div>
+        <%products.forEach(product=>{%>
+           
+            <%if(product.category=="Fertilizer"){%>
+            <div class="col-md-3 prod">
+                <div>
+                <%let img=product.name.replace(/\s/g,''); img=img.replace(/:/g,'');%>
+                <img src="<%=img%>.jpg" class="img-fluid" alt="fertilizer">
+                <h3><%=product.name%></h3>
+                <div class="info">
+                <h5>Rs.<%=product.price%></h5>
+                <h5><%=product.packing%></h5>
+            </div>
+            <div class="buttons">
+                <%if(curuser&&!curuser.isadmin){%>
+                    <a href="/cart/<%=product._id%>/add" class="btn-outline-success ">Add to Cart</a>
+
+                <!-- <form action="/order/<%=product._id%>/check" method="POST">
+                <input type="text" name="quantity" value="Order" class="btn-outline-success" >
+                </form> -->
+                <%}else if(curuser&&curuser.isadmin){%>
+                    <a href="/edit/<%=product._id%>/product" class="btn-outline-success ">Edit</a>
+                    <%}%>
+                <a href="/fertilizer/<%=product._id%>/view" class="btn-outline-info ">View</a>
+            </div>
+        </div>
+            </div>
+            <%}%>
+        <%})%>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Seeds</h2>
+            <hr>
+
+        </div>
+        <%products.forEach(product=>{%>
+            <%if(product.category=="Seeds"){%>
+            <div class="col-md-4 prod">
+                <div>
+                    <%let img=product.name.replace(/\s/g,'');%>
+                <img src="<%=img%>.jpg" class="img-fluid" alt="fertilizer">
+                    <h3><%=product.name%></h3>
+                <div class="info">
+                    <h5>Rs.<%=product.price%></h5>
+                    <h5><%=product.packing%></h5>
+                </div>
+            <div class="buttons">
+                <%if(curuser&&!curuser.isadmin){%>
+                    <a href="/cart/<%=product._id%>/add" class="btn-outline-success ">Add to Cart</a>
+                <!-- <form action="/order/<%=product._id%>/check" method="POST">
+                    <input type="text" name="quantity" value="Order" class="btn-outline-success" >
+                    </form> -->
+                    <%}else if(curuser&&curuser.isadmin){%>
+                        <a href="/edit/<%=product._id%>/product" class="btn-outline-success ">Edit</a>
+                        <%}%>
+            </div>
+                </div>
+            </div>
+            <%}%>
+        <%})%>
+    </div><div class="row">
+        <div class="col-md-12">
+            <h2>Pesticides</h2>
+            <hr>
+
+        </div>
+        <%products.forEach(product=>{%>
+            <%if(product.category=="Pesticide"){%>
+            <div class="col-md-4 prod">
+               <div>
+                <%let img=product.name.replace(/\s/g,'');%>
+                <img src="<%=img%>.jpg" class="img-fluid" alt="fertilizer">
+                <h3><%=product.name%></h3>
+                <div class="info">
+                    <h5>Rs.<%=product.price%></h5>
+                    <h5><%=product.packing%></h5>
+                </div>
+            <div class="buttons">
+                <%if(curuser&&!curuser.isadmin){%>
+                <a href="/cart/<%=product._id%>/add" class="btn-outline-success ">Add to Cart</a>
+                <!-- <form action="/order/<%=product._id%>/check" method="POST">
+                    <input type="text" name="quantity" value="Order" class="btn-outline-success" >
+                    </form> -->
+                <%}else if(curuser&&curuser.isadmin){%>
+                <a href="/edit/<%=product._id%>/product" class="btn-outline-success ">Edit</a>
+                <%}%>
+            </div>
+               </div>
+            </div>
+            <%}%>
+        <%})%>
+    </div>
+</div>
+<%-include("footer")%>

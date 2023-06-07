@@ -1,0 +1,56 @@
+<%-include("header")%>
+<style>
+    .profile{
+        width:70%;
+        margin:auto;
+        margin-top:80px;
+    }
+    .profile input,textarea{
+        margin-bottom:20px;
+    }
+    .btn-edit{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    #edit{
+        margin-bottom: 40px;
+    }
+    h1{
+        margin-bottom:40px;
+    }
+    #update{
+        display: none;
+    }
+</style>
+<div class="profile">
+    <h1>Profile</h1>
+    <div class="btn-edit">
+        <button id="edit" class="btn btn-info ">Edit</button>
+        
+    </div>
+    <form action="/edit/<%=user._id%>/profile" method="POST" class="form-group row">
+        <label for="name" class="col-md-6">Name</label>
+        <div class="col-md-6">
+            <input type="text" name="name" id="name" required class="form-control" value="<%=user.name%>" disabled="true">
+        </div>
+        <label for="address" class="col-md-6">Address</label>
+        <div class="col-md-6">
+            <textarea name="address" id="address" required class="form-control" disabled="true"><%=user.address%></textarea>
+        </div>
+        <label for="phone" class="col-md-6">Phone No</label>
+        <div class="col-md-6">
+            <input type="text" name="phone" id="phone" required class="form-control" value="<%=user.phone%>" disabled="true">
+        </div>
+        <input type="submit" value="Update" id="update" class="btn btn-success">
+    </form>
+</div>
+<script>
+    document.getElementById("edit").addEventListener("click",(e)=>{
+        document.getElementById("name").removeAttribute("disabled");
+        document.getElementById("address").removeAttribute("disabled");
+        document.getElementById("phone").removeAttribute("disabled");
+        document.getElementById("update").style.display="inline";
+    });
+</script>
+<%-include("footer")%>

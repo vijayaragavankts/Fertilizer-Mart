@@ -1,0 +1,80 @@
+<%-include("header")%>
+<style>
+    .container
+   {	
+       width:100%;
+       min-height:100vh;
+       background-image:linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.25)),url(3.jpg);
+       background-size:cover;
+       background-position:center;
+   }
+   .container h1{
+       color:white;
+       font-weight:800px;
+       font-size:30px;
+   }
+   .form-group label
+   {
+       color :black;
+   }
+   .form-group input[type="text"],.form-group input[type="number"],.form-group input[type="password"],.form-group input[type="email"],.form-group input[type="textarea"],textarea,.required{
+   width:280px;
+   transition: 0.3s all;
+   border-radius: 5px;
+
+   }
+       
+   .form-group input[type="text"]:focus,textarea:focus,.form-group input[type="number"]:focus,.form-group input[type="password"]:focus,.form-group input[type="email"]:focus,.form-group input[type="textarea"]:focus{
+   width:400px;
+   transition: 0.3s all;
+   border-color:#e91e63;
+   
+   }
+   .submit button[type="submit"]
+   {
+       width:100px;
+       background:#e91e63;
+       color:#fff;
+       border:none;
+       cursor:pointer;
+       padding:10px;
+       font-size:18px;
+   }
+   </style> 
+<!-- <div background="3.jpg"> -->
+   <center>
+    <div class="container">
+      <h1>SIGN UP</h1><br>
+      <form action="/signup" method="POST">
+        <div class="form-group">
+            <h3><label for="name">Name:</label></h3>
+            <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="name" required="required">
+        </div>
+        <div class="form-group">
+            <h3><label for="address">Address</label></h3>
+            <textarea  name="address" id="address" cols="30" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <h3><label for="phnno">MobileNo:</label></h3>
+            <input type="number" class="form-control" id="phnno" placeholder="Enter Your mobile Number" name="phnno" required="required">
+        </div>
+        <div class="form-group">
+          <h3><label for="email">Email:</label></h3>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="username" required="required">
+        </div>
+        <div class="form-group">
+          <h3><label for="password">Password:</label></h3>
+          <input type="textarea" class="form-control" id="pass" placeholder="Enter password" name="password" required="required">
+        </div>
+        <div class="form-group">
+          <h3><label for="password">Confirm Password:</label></h3>
+          <input type="textarea" class="form-control" id="pass" placeholder="Enter Confirm password" name="cpassword" required="required">
+        </div>
+        <div class="submit">
+<input type="submit" value="SignUp" class="btn btn-primary">
+        </div>
+      </form>
+    </div>
+    </center>
+<!-- </div> -->
+<%-include("footer")%>

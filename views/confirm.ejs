@@ -1,0 +1,91 @@
+<%-include("header")%>
+<style>
+    body {
+      background-image: url('orders.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+     body{
+        color: rgb(204, 241, 255);
+    }
+    h2,h3{
+        text-align: center;
+    }
+
+    .myorders .userDet{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    /* .userDet .add{
+        width:100px;
+    } */
+    .myorders table{
+        padding:50px;
+        margin:50px;
+        font-size: 18px;
+        width:100%;
+    }
+    .myorders h3{
+        text-align: left;
+    }
+    .confirm{
+        width:70%;
+        padding:60px;
+        margin:auto;
+
+        background-color: rgba(240, 248, 255,0.2);
+        backdrop-filter: blur(8px);
+    }
+    table th{
+        padding-bottom: 20px;
+        /* text-align: center; */
+    }
+    #total td{
+        padding-top: 50px;
+    }
+
+</style>
+<br><br>
+<div class="confirm">
+    <h2> Ordered Summary </h2>
+    <h3>SRI AMMAN AGENCIES</h3>
+    <div class="myorders">
+        <div class="userDet">
+            <div><h3><%=user.name%></h3>
+            <h3><%=user.phone%></h3>
+            </div>
+            <div class="add">
+                <p><%=user.address%></p>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity X Price</th>
+                <th>Sub Total</th>
+            </tr>
+            <%order.forEach(item=>{%>
+                <tr>
+                    <td><%=item.name%></td>
+                    <td><%=item.quantity%> X <%=item.price%></td>
+                    <td>Rs.<%=item.quantity*item.price%></td>
+                </tr>
+            <%})%>
+            
+            <tr id="total">
+                <td></td>
+                <td>Total : </td>
+                <td>Rs.<%=total%></td>
+            </tr>
+        </table>
+        <h3>Order Placed Successfully !</h3>
+    </div>
+</div>
+    
+        
+    </div>
+</div>
+<%-include("footer")%>

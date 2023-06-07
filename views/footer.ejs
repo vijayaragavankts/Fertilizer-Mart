@@ -1,0 +1,27 @@
+</body>
+<script>
+    var f=document.querySelectorAll(".btn-outline-success");
+    for(let i=0;i<f.length;i++){
+        f[i].addEventListener("focusin",(e)=>{
+            console.log(e)
+        e.target.value="";
+        e.target.style.backgroundColor="white";
+        e.target.style.color="black";
+        e.target.placeholder="Press Enter after Entering Qunatity"
+        console.log(e.target.nextSibling)
+        e.target.nextSibling.style.display="none";
+    })
+    f[i].addEventListener("focusout",(e)=>{
+            console.log(e)
+        e.target.value="Order";
+        e.target.style.backgroundColor="rgb(16, 182, 16)";
+        e.target.style.color="white";
+    })
+    // f[i].addEventListener("keyup",(e)=>{
+    //     if(e.keyCode==13){
+    //         console.log(e.parentElement)
+    //     }
+    // })
+}
+</script>
+</html>

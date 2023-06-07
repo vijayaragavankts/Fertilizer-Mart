@@ -1,0 +1,42 @@
+<%-include("header")%>
+<div class="admin">
+    <div class="containadmin row">
+        <a href="/admin" class="btn btn-success">Current Orders</a>
+        <table class="admin-page">
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Products</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%orders.forEach(item=>{%>
+                    <tr>
+                        <td class="date"><%=item.date.toLocaleString('en-US', {
+                            weekday: 'short', 
+                            day: 'numeric',
+                            year: 'numeric', 
+                            month: 'long', 
+                            hour: 'numeric', 
+                            minute: 'numeric', 
+                        })%></td>
+                        <td><%=item.username%></td>
+                        <td><%=item.phone%></td>
+                        <td class="address"><%=item.address%></td>
+                        <td>
+                            <%item.products.forEach(pdt=>{%>
+                                <li><%=pdt.name%> - <%=pdt.quantity%></li>
+                            <%})%>
+                        </td>
+                        <td class="total">Rs.<%=item.total%></td>                        
+                    </tr>
+                <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%-include("footer")%>

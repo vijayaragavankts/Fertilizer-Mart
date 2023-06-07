@@ -1,0 +1,73 @@
+<%-include("header")%>
+    <link rel="stylesheet" href="cart.css">
+    <div class="container main-section">
+        <div class="row">
+            <div class="col-lg-12 pb-2">
+                <h2> Sri Amman Agencies Shoping Cart </h2>
+            </div>
+            <%if(cart.length>0){%>
+            <div class="col-lg-12 pl-3 pt-3">
+                <table class="table table-hover border bg-white">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h4> <b> Product Details </b> </h4>
+                            </th>
+                            <th>
+                                <h4> <b> Price </h4> <b>
+                            </th>
+                            <th style="width:5%;">
+                                <h4> <b> Quantity <b> </h4>
+                            </th>
+                            <th>
+                                <h4> <b> Action <b> </h4>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%cart.forEach(item=>{%>
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-lg-2 Product-img">
+                                            <%let img=item.productName.replace(/\s/g,''); img=img.replace(/:/g,'');%>
+                                                <img src="/<%=img%>.jpg" alt="product" class="img-fluid" />
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <h5 class="nomargin"> <b>
+                                                    <%=item.productName%>
+                                                </b> </h5>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td> <strong> Rs.<%=item.price%></strong> </td>
+                                <td data-th="Quantity">
+                                    <b> <input type="number" id="<%=item.id%>" class="form-control text-center quantity"
+                                            value="<%=item.quantity%>"> </b>
+                                </td>
+                                <td class="actions" data-th="" style="width:10%;">
+                                    <a href="cart/<%=item._id%>/delete" class="btn btn-danger btn-sm"> <i
+                                            class="fas fa-times"> </i> </a>
+                                </td>
+                            </tr>
+                            <% })%>
+                    </tbody>
+                </table>
+                <a href="/order" class="btn btn-outline-success">Order</a>
+            </div>
+            <%}%>
+        </div>
+    </div>
+    <script>
+        var q = document.querySelectorAll(".quantity");
+        console.log(q)
+        for (let i = 0; i < q.length; i++)
+        {
+            q[i].addEventListener("change", (e) => {
+                fetch("http://localhost:2000/updateQuantity/" + e.target.id + "/" + e.target.value + "/get")
+                    .then(response => response.json())
+                    .then(json => console.log(json));
+            })
+        }
+    </script>
+    <%-include("footer")%>
